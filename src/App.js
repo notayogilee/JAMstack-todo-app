@@ -13,7 +13,7 @@ const App = () => {
     try {
       const res = await fetch('/.netlify/functions/getTasks');
       const tasks = await res.json();
-      console.log(tasks)
+
       setTasks(tasks);
     } catch (err) {
       console.error(err)
