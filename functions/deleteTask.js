@@ -1,23 +1,23 @@
 const axios = require('axios');
 require('dotenv').config();
-const { CREATE_TASK } = require('./utils/taskQueries.js');
+const { DELETE_TASK } = require('./utils/taskQueries.js');
 const sendQuery = require('./utils/sendQuery');
 const formattedResponse = require('./utils/formattedResponse');
 
 exports.handler = async (event) => {
 
-  if (event.httpMethod !== "POST") {
+  if (event.httpMethod !== "DELETE") {
     return formattedResponse(405, { err: "Method not supported" });
   }
 
-  const { title, description, priority } = JSON.parse(event.body);
-  const variables = { title, description, priority };
+  const { id } = JSON.parse(event.body);
+  const variables = { id };
 
   try {
 
-    const { createTask: createdTask } = await sendQuery(CREATE_TASK, variables);
+    const { deleteTask: deletedTask } = await sendQuery(DELETE_TASK, variables);
 
-    return formattedResponse(200, createdTask);
+    return formattedResponse(200, deletedTask);
 
   } catch (err) {
     console.error(err);
