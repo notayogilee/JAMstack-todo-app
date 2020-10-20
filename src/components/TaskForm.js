@@ -1,6 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import TaskCard from './TaskCard';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 export default function TaskForm({ refreshTasks }) {
+
+  useEffect(() => {
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems, {
+        classes: "string"
+      });
+    });
+  }, [])
 
   const [showTaskForm, setShowTaskForm] = useState(false);
 
@@ -39,11 +50,68 @@ export default function TaskForm({ refreshTasks }) {
   return (
     <div>
       {!showTaskForm &&
-        <button className="btn btn-primary btn-block" onClick={() => setShowTaskForm(true)}>Add A New Task</button>
+        <div className="fixed-action-btn">
+          <a onClick={() => setShowTaskForm(true)} className="btn-floating btn-large green lighten-1">
+            <i className="large material-icons">add</i>
+          </a>
+        </div>
+
       }
 
-      {showTaskForm &&
-        <div className="card">
+      {
+        showTaskForm &&
+
+        <div className="row">
+          <form className="col s12">
+            <div className="row">
+              <div className="input-field col s12">
+                <input
+                  placeholder={title}
+                  id="title"
+                  type="text"
+                  className="validate"
+                  value={title}
+                  onChange={e => setTitle(e.target.value)}
+                />
+                <label htmlFor="title">Title</label>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="input-field col s12">
+                <textarea
+                  id="textarea1"
+                  className="materialize-textarea"
+                  value={description}
+                  onChange={e => setDescription(e.target.value)}
+                />
+                <label htmlFor="textarea1">Description</label>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="input-field col s12">
+                <input
+
+                  id="priority"
+                  type="number"
+                  className="validate"
+                  min="1"
+                  max="5"
+                  value={priority}
+                  onChange={e => setPriority(parseInt(e.target.value))}
+                />
+                <label htmlFor="priority">Priority</label>
+              </div>
+            </div>
+
+
+          </form>
+          <a className="waves-effect green lighten-4 green-text btn left" onClick={handleSubmit}><i className="material-icons left">check</i>add task</a>
+          <a className="waves-effect green lighten-4 green-text btn right" onClick={cancel}><i className="material-icons left">close</i>cancel</a>
+        </div>
+      }
+      {/* <div className="card">
           <div className="card-header">Add Task</div>
           <div className="card-body">
             <form onSubmit={handleSubmit}>
@@ -83,8 +151,8 @@ export default function TaskForm({ refreshTasks }) {
               <button onClick={cancel} type="submit" className="btn btn-danger btn-block">Cancel</button>
             </form>
           </div>
-        </div>
-      }
+        </div> */}
+
     </div>
   )
 }
