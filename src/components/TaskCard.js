@@ -24,7 +24,6 @@ export default function TaskCard({ task, refreshTasks }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const body = { title, description, priority, _id: task._id }
-    console.log(body)
     try {
       const res = await fetch("/api/updateTask", {
         method: "PUT",
