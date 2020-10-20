@@ -11,7 +11,7 @@ const App = () => {
 
   const loadTasks = async () => {
     try {
-      const res = await fetch('/api/getTasks');
+      const res = await fetch('/.netlify/functions/getTasks');
       const tasks = await res.json();
       console.log(tasks)
       setTasks(tasks);

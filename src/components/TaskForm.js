@@ -18,7 +18,7 @@ export default function TaskForm({ refreshTasks }) {
     e.preventDefault();
     const body = { title, description, priority }
     try {
-      const res = await fetch("/api/createTask", {
+      const res = await fetch("/.netlify/functions/createTask", {
         method: "POST",
         body: JSON.stringify(body),
       });

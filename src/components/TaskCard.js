@@ -11,7 +11,7 @@ export default function TaskCard({ task, refreshTasks }) {
   const deleteTask = async () => {
     const id = task._id;
     try {
-      await fetch('./api/deleteTask', {
+      await fetch('./.netlify/functions/deleteTask', {
         method: "DELETE",
         body: JSON.stringify({ id })
       });
@@ -25,7 +25,7 @@ export default function TaskCard({ task, refreshTasks }) {
     e.preventDefault();
     const body = { title, description, priority, _id: task._id }
     try {
-      const res = await fetch("/api/updateTask", {
+      const res = await fetch("/.netlify/functions/updateTask", {
         method: "PUT",
         body: JSON.stringify(body),
       });
