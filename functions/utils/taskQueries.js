@@ -12,7 +12,7 @@ query{
 
 const CREATE_TASK = `
   mutation($title: String!, $description: String!, $priority: Int) {
-    createTask( data: {title: $title, description: $description, priority: 1}) {
+    createTask( data: {title: $title, description: $description, priority: $priority}) {
      title,
      description,
      priority,
