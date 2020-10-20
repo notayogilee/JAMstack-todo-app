@@ -36,9 +36,7 @@ const App = () => {
       <Navbar />
       <div className="container">
         <TaskForm refreshTasks={loadTasks} />
-        <div className="col s12 offset-s3 center">
-          <TaskList tasks={tasks} refreshTasks={loadTasks} />
-        </div>
+        <TaskList tasks={tasks} refreshTasks={loadTasks} />
       </div>
     </div>
   );
