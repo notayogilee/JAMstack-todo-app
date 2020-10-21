@@ -11,10 +11,13 @@ export default function PrivateRoute() {
         muted
         onVideoPause={() => console.log(':(')}
       /> */}
-      {/* <TwitchChat channel="notayogilee" theme="light" /> */}
       {/* <TwitchClip clip="WealthyBumblingKimchiItsBoshyTime" parent={['mycoolsite.com, anotherawesomesite.net']} /> */}
       <div className="container">
-        <h4>Next live class on Monday at 6pm</h4>
+        <div>
+
+          <h4>Next live class on Monday at 6pm</h4>
+          <TwitchChat channel="notayogilee" theme="light" />
+        </div>
         <TwitchPlayer
           channel="notayogilee"
           id="notayogilee"
