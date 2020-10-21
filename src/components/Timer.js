@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 
 export default function Timer() {
 
+  const [showTimer, setShowTimer] = useState(false);
+
   const [timerDays, setTimerDays] = useState('00');
   const [timerHours, setTimerHours] = useState('00');
   const [timerMinutes, setTimerMinutes] = useState('00');
@@ -12,6 +14,7 @@ export default function Timer() {
   const startTimer = () => {
     const countdownDate = new Date('October 26, 2020 18:00:00').getTime();
 
+
     interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = countdownDate - now;
@@ -21,8 +24,10 @@ export default function Timer() {
       const minutes = Math.floor(distance % (1000 * 60 * 60) / (1000 * 60));
       const seconds = Math.floor(distance % (1000 * 60) / 1000);
 
+      setShowTimer(true);
       if (distance < 0) {
         // stop our timer
+        setShowTimer(false)
         clearInterval(interval.current);
       } else {
         //update timer
@@ -41,9 +46,13 @@ export default function Timer() {
       clearInterval(interval.current);
     }
   }, [])
-  console.log(timerDays, timerHours, timerMinutes, timerSeconds)
 
   return (
-    <h5>Next live class in {timerDays} days {timerHours} hours {timerMinutes} minutes {timerSeconds} seconds</h5>
+    <div>
+      {showTimer &&
+        <h5>Next live class in {timerDays} days {timerHours} hours {timerMinutes} minutes {timerSeconds} seconds</h5>
+      }
+
+    </div>
   )
 }
