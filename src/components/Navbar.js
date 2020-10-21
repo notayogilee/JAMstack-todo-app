@@ -1,13 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import netlifyIdentity from 'netlify-identity-widget';
 
 export default function Navbar() {
   return (
     <nav>
       <div className="nav-wrapper green lighten-1">
-        <a href="#" className="brand-logo left">Todo List</a>
+        <Link to="/" className="brand-logo left">Todo List</Link>
         <ul id="nav-mobile" className="right">
-          <li><a href="sass.html">Login</a></li>
-          <li><a href="badges.html">Register</a></li>
+          <li><a href="/privateRoute">Private Route</a></li>
+          <li><a href="#!" onClick={() => netlifyIdentity.open()}>Login/Register</a></li>
         </ul>
       </div>
     </nav>
