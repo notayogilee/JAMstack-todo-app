@@ -7,7 +7,13 @@ export default function Navbar({ refreshTasks }) {
 
   const handleLogin = async () => {
     netlifyIdentity.open();
-    await netlifyIdentity.on('login', () => refreshTasks());
+    await netlifyIdentity.on('login', () => {
+      const user = netlifyIdentity.currentUser();
+      user.role = "free"
+      refreshTasks();
+    }
+    );
+
   }
 
   const handleLogout = () => {
