@@ -14,9 +14,6 @@ export default function PrivateRoute() {
           channel="notayogilee"
           id="notayogilee"
           height="60vh"
-          allowFullScreen="true"
-          overflow="hidden"
-
         />
       </div>
     </div>
