@@ -35,7 +35,7 @@ const App = () => {
     <div className="row">
       <Router>
         <Navbar refreshTasks={loadTasks} />
-        <TaskForm />
+        <TaskForm refreshTasks={loadTasks} />
         <Switch>
           <Route exact path="/" render={(props) => <TaskList {...props} refreshTasks={loadTasks} tasks={tasks} />} />
           <Route exact path="/privateRoute" component={PrivateRoute} />

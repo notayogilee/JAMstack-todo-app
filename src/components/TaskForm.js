@@ -34,8 +34,8 @@ export default function TaskForm({ refreshTasks }) {
         body: JSON.stringify(body),
       });
       resetForm();
-      refreshTasks();
       setShowTaskForm(false);
+      refreshTasks();
 
     } catch (err) {
       console.error(err);

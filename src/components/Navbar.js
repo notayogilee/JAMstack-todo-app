@@ -21,11 +21,11 @@ export default function Navbar({ refreshTasks }) {
     refreshTasks();
   }
 
-  const getUserDetails = async () => {
-    const user = await netlifyIdentity.currentUser();
-    console.log("User details", user);
-    console.log("token", user.token);
-  }
+  // const getUserDetails = async () => {
+  //   const user = await netlifyIdentity.currentUser();
+  //   console.log("User details", user);
+  //   console.log("token", user.token);
+  // }
 
   return (
     <nav>
@@ -40,7 +40,7 @@ export default function Navbar({ refreshTasks }) {
             <li><a href="#!" onClick={handleLogin}>Login/Register</a></li>
 
           }
-          <li><a href="#!" onClick={getUserDetails}>User Details</a></li>
+          {/* <li><a href="#!" onClick={getUserDetails}>User Details</a></li> */}
         </ul>
       </div>
     </nav>

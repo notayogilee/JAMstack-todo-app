@@ -43,7 +43,6 @@ export default function TaskCard({ task, refreshTasks }) {
     setShowEditForm(false);
   }
 
-
   return (
     <div className="row">
       {!showEditForm &&
